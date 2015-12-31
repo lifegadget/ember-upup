@@ -16,6 +16,15 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      'default-src': "'unsafe-eval' http://cloudfront.net",
+      'script-src': "'self' 'unsafe-inline'",
+      'font-src': "'self' http://fonts.gstatic.com http://fonts.googleapis.com",
+      'connect-src': "'self'",
+      'img-src': "'self' https://npmjs.org https://npmjs.com https://badge.fury.io https://travis-ci.org https://api.travis-ci.org https://codeclimate.com https://*.cloudfront.net http://ak-hdl.buzzfed.com/static/2014-01/enhanced/webdr07/3/11",
+      'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
+      'media-src': "'self'"
     }
   };
 
