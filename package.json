@@ -1,6 +1,6 @@
 {
   "name": "ember-upup",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Offline first in Ember with UpUp.",
   "directories": {
     "doc": "doc",
