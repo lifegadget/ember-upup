@@ -28,17 +28,8 @@ module.exports = {
       const options = JSON.stringify({
         'content-url': 'index.html',
         'assets': [
-          'assets/dummy.css',
-          'assets/dummy.js',
-          'assets/dummy.map',
-          'assets/vendor.css',
-          'assets/vendor.js',
-          'assets/vendor.map',
-          'demo-helper/images/ember-london.png',
-          'demo-helper/images/ember-houston.png',
-          'demo-helper/images/ember-munich.png',
-          'demo-helper/images/ember-philly.png',
-          'demo-helper/images/ember-seattle.png',
+          'assets/*',
+          'demo-helper/images/*'
         ]
       });
       const instantiate = `UpUp.start(${options});`;
