@@ -1,7 +1,8 @@
 /* jshint node: true */
 'use strict';
-const fs = require('fs-extra');
 const path = require('path');
+const Funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
 const JS_FILES = ['upup.min.js', 'upup.sw.min.js'];
 
 const readFile = function(filePath) {
@@ -20,21 +21,6 @@ const readFile = function(filePath) {
 
 module.exports = {
   name: 'ember-upup',
-
-  normalizeEntityName: function() {},
-  postBuild: function() {
-    // we need the two UpUp JS files to reside in the root directory so they
-    // have scope to include any/all assets being served
-    const source = path.join(__dirname, 'bower_components', 'upup/dist');
-    const destination = path.join(__dirname, '/dist');
-    JS_FILES.map(file => {
-      fs.copy(path.join(source, file), path.join(destination, file), err => {
-        if(err) {
-          console.error(err);
-        }
-      });
-    });
-  },
   contentFor: function(type, config) {
     if (type === 'head-footer') {
       const fileRefs = JS_FILES.map(file => `<script src='/${file}'></script>`);
@@ -59,5 +45,19 @@ module.exports = {
       const epilog = '</script>';
       return [...fileRefs, preamble, instantiate, epilog].join('\n');
     }
+  },
+  treeForPublic: function() {
+    const upupPath = path.join(this.app.bowerDirectory, 'upup/dist');
+    const publicTree = this._super.treeForPublic.apply(this, arguments);
+    const trees = [];
+    if (publicTree) {
+      trees.push(publicTree);
+    }
+    trees.push(new Funnel(upupPath, {
+      include: JS_FILES,
+      destDir: '/'
+    }));
+
+    return mergeTrees(trees);
   }
 };
