@@ -7,3 +7,12 @@
 {{#link-to 'philly'}}Tomster Philly{{/link-to}}
 <hr>
 {{outlet}}
+
+<p>
+  &nbsp;
+</p>
+{{#if browserSupport}}
+  this browser <span class="text-success">DOES</span> support service workers
+{{else}}
+  this browser <span class="text-danger">DOES NOT</span> support service workers
+{{/if}}

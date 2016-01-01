@@ -25,6 +25,20 @@ module.exports = function(environment) {
       'img-src': "'self' https://npmjs.org https://npmjs.com https://badge.fury.io https://travis-ci.org https://api.travis-ci.org https://codeclimate.com https://*.cloudfront.net http://ak-hdl.buzzfed.com/static/2014-01/enhanced/webdr07/3/11",
       'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com",
       'media-src': "'self'"
+    },
+    upup: {
+      assets: [
+        'assets/dummy.css',
+        'assets/dummy.js',
+        'assets/vendor.css',
+        'assets/vendor.js',
+        'demo-helper/images/ember-london.png',
+        'demo-helper/images/ember-houston.png',
+        'demo-helper/images/ember-munich.png',
+        'demo-helper/images/ember-philly.png',
+        'demo-helper/images/ember-seattle.png',
+        'demo-helper/images/emberjs-icon.png'
+      ]
     }
   };
 
